@@ -11,5 +11,13 @@ namespace WumpusTestHighScore
         {
             Console.WriteLine("You just made a new GUI");
         }
+        int DoorClicked()
+        {
+            return 0;
+        }
+        bool TriviaRight()
+        {
+            return true;
+        }
     }
 }

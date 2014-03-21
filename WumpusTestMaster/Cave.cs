@@ -10,6 +10,34 @@ namespace WumpusTestHighScore
         public Cave()
         {
             Console.WriteLine("You just made a new Cave Object");
+            Generator generator = new Generator();
         }
     }
+    class Generator
+    {
+        static void Main(string[] args)
+        {
+
+        }
+
+        public List<Node> GenerateMap()
+        {
+            Node node1 = new Node(1);
+            List<Node> nodeList = new List<Node>();
+            return nodeList;
+
+        }
+    }
+
+    public class Node
+    {
+        int nodeNumber;
+
+        public Node(int nodeNumber)
+        {
+            this.nodeNumber = nodeNumber;
+        }
+    }
+
+    
 }
