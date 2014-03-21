@@ -1,0 +1,9 @@
+C:\Users\s-jtayade\AppData\Local\Temporary Projects\WumpusTestHighScore\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\s-jtayade\AppData\Local\Temporary Projects\WumpusTestHighScore\obj\x86\Debug\WumpusTestHighScore.Form1.resources
+C:\Users\s-jtayade\AppData\Local\Temporary Projects\WumpusTestHighScore\obj\x86\Debug\WumpusTestHighScore.Properties.Resources.resources
+C:\Users\s-jtayade\AppData\Local\Temporary Projects\WumpusTestHighScore\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\s-jtayade\AppData\Local\Temporary Projects\WumpusTestHighScore\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\s-jtayade\AppData\Local\Temporary Projects\WumpusTestHighScore\bin\Debug\WumpusTestHighScore.exe
+C:\Users\s-jtayade\AppData\Local\Temporary Projects\WumpusTestHighScore\bin\Debug\WumpusTestHighScore.pdb
+C:\Users\s-jtayade\AppData\Local\Temporary Projects\WumpusTestHighScore\obj\x86\Debug\WumpusTestHighScore.exe
+C:\Users\s-jtayade\AppData\Local\Temporary Projects\WumpusTestHighScore\obj\x86\Debug\WumpusTestHighScore.pdb
