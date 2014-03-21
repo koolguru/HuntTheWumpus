@@ -18,3 +18,11 @@ C:\Users\s-jtayade\Documents\Wumpus Code\Week 1\WumpusTestMaster\obj\x86\Debug\G
 C:\Users\s-jtayade\Documents\Wumpus Code\Week 1\WumpusTestMaster\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\s-jtayade\Documents\HuntTheWumpus\WumpusTestMaster\obj\x86\Debug\WumpusTestMaster.exe
 C:\Users\s-jtayade\Documents\HuntTheWumpus\WumpusTestMaster\obj\x86\Debug\WumpusTestMaster.pdb
+C:\Users\Jay\Documents\Dev\HuntTheWumpus\WumpusTestMaster\obj\x86\Debug\WumpusTestMaster.exe
+C:\Users\Jay\Documents\Dev\HuntTheWumpus\WumpusTestMaster\obj\x86\Debug\WumpusTestMaster.pdb
+C:\Users\Jay\Documents\Dev\HuntTheWumpus\WumpusTestMaster\obj\x86\Debug\WumpusTestMaster.csprojResolveAssemblyReference.cache
+C:\Users\Jay\Documents\Dev\HuntTheWumpus\WumpusTestMaster\obj\x86\Debug\WumpusTestHighScore.Form1.resources
+C:\Users\Jay\Documents\Dev\HuntTheWumpus\WumpusTestMaster\obj\x86\Debug\WumpusTestHighScore.Properties.Resources.resources
+C:\Users\Jay\Documents\Dev\HuntTheWumpus\WumpusTestMaster\obj\x86\Debug\WumpusTestMaster.csproj.GenerateResource.Cache
+C:\Users\Jay\Documents\Dev\HuntTheWumpus\WumpusTestMaster\bin\Debug\WumpusTestMaster.exe
+C:\Users\Jay\Documents\Dev\HuntTheWumpus\WumpusTestMaster\bin\Debug\WumpusTestMaster.pdb
