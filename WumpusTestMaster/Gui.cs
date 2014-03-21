@@ -11,5 +11,25 @@ namespace WumpusTestHighScore
         {
             Console.WriteLine("You just made a new GUI");
         }
+        int RoomClicked()
+        {
+            return 0;
+        }
+        bool TriviaCorrect()
+        {
+            return true;
+        }
+        void getHighScores()
+        {
+
+        }
+        void MovePlayer()
+        {
+
+        }
+        void Update()
+        {
+
+        }
     }
 }
