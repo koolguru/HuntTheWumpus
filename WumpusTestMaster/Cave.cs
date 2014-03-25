@@ -15,11 +15,6 @@ namespace WumpusTestHighScore
     }
     class Generator
     {
-        static void Main(string[] args)
-        {
-
-        }
-
         public List<Node> GenerateMap()
         {
             Node node1 = new Node(1);

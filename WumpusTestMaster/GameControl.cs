@@ -7,10 +7,6 @@ namespace WumpusTestHighScore
 {
     class GameControl
     {
-        public GameControl()
-        {
-            Console.WriteLine("You just made a new Game Control Object");
-        }
         public enum Direction { up, left, right, down };
         public GameControl()
         {
