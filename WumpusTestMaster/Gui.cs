@@ -31,5 +31,13 @@ namespace WumpusTestHighScore
         {
 
         }
+        int DoorClicked()
+        {
+            return 0;
+        }
+        bool TriviaRight()
+        {
+            return true;
+        }
     }
 }

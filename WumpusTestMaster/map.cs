@@ -11,5 +11,20 @@ namespace WumpusTestHighScore
         {
             Console.WriteLine("You just made a new Map Object");
         }
+        int playerLocation;
+        public int getPlayerLocation()
+        {
+            return playerLocation;
+        }
+        int wumpusLocation;
+        public int getWumpusLocation()
+        {
+            return wumpusLocation;
+        }
+        int BatLocation;
+        public int getBatLocation()
+        {
+            return BatLocation;
+        }
     }
 }

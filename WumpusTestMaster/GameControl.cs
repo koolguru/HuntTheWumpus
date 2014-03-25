@@ -11,5 +11,29 @@ namespace WumpusTestHighScore
         {
             Console.WriteLine("You just made a new Game Control Object");
         }
+        public enum Direction { up, left, right, down };
+        public GameControl()
+        {
+            Console.WriteLine("You Created a Game Control Object!");
+        }
+
+        public void keyboardReact()
+        {
+        }
+        public void gamepadReact()
+        {
+        }
+        public void printTriviaQuestion()
+        {
+        }
+        public void printTrivia()
+        {
+        }
+        private void movePlayer(Direction direction)
+        {
+        }
+        private void changeCaves(Direction direction)
+        {
+        }
     }
 }
