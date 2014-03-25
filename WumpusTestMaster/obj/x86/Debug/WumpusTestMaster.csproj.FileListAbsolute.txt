@@ -22,4 +22,15 @@ C:\Users\s-planum\AppData\Local\Programs\Git\HuntTheWumpusNotRussel\WumpusTestMa
 =======
 C:\Users\s-jtayade\Documents\HuntTheWumpus\WumpusTestMaster\obj\x86\Debug\WumpusTestMaster.exe
 C:\Users\s-jtayade\Documents\HuntTheWumpus\WumpusTestMaster\obj\x86\Debug\WumpusTestMaster.pdb
+<<<<<<< HEAD
 >>>>>>> f09186714d9de1a11ea9ea7c8f475ddabfbafbf9
+=======
+C:\Users\Jay\Documents\Dev\HuntTheWumpus\WumpusTestMaster\obj\x86\Debug\WumpusTestMaster.exe
+C:\Users\Jay\Documents\Dev\HuntTheWumpus\WumpusTestMaster\obj\x86\Debug\WumpusTestMaster.pdb
+C:\Users\Jay\Documents\Dev\HuntTheWumpus\WumpusTestMaster\obj\x86\Debug\WumpusTestMaster.csprojResolveAssemblyReference.cache
+C:\Users\Jay\Documents\Dev\HuntTheWumpus\WumpusTestMaster\obj\x86\Debug\WumpusTestHighScore.Form1.resources
+C:\Users\Jay\Documents\Dev\HuntTheWumpus\WumpusTestMaster\obj\x86\Debug\WumpusTestHighScore.Properties.Resources.resources
+C:\Users\Jay\Documents\Dev\HuntTheWumpus\WumpusTestMaster\obj\x86\Debug\WumpusTestMaster.csproj.GenerateResource.Cache
+C:\Users\Jay\Documents\Dev\HuntTheWumpus\WumpusTestMaster\bin\Debug\WumpusTestMaster.exe
+C:\Users\Jay\Documents\Dev\HuntTheWumpus\WumpusTestMaster\bin\Debug\WumpusTestMaster.pdb
+>>>>>>> bbaa1691cfe488be6cbc26b22db503c0bf4112d7
