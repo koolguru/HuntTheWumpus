@@ -2,7 +2,7 @@ HuntTheWumpus
 =============
 
 This is our teams official hunt the wumpus project
-And we are awesome.
+And we are awesome. Yes we are. And this is smooth group collaboration.
 =======
 Contributing
 ============
