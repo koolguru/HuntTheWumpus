@@ -3,12 +3,13 @@ HuntTheWumpus
 
 This is our teams official hunt the wumpus project
 
+WHOO DEVANSH IS HERE.
+=======
 Contributing
 ============
 
 - Install Git: http://git-scm.com/downloads
 - Install GitHub for Desktop: https://help.github.com/articles/set-up-git
-
 
 ALERT: Contributing/Forking
 ===========================
@@ -23,4 +24,5 @@ When you start working always type:
 - git fetch
 - git merge origin/master
 	- Will update your local files with any changes made to repository
+
 
