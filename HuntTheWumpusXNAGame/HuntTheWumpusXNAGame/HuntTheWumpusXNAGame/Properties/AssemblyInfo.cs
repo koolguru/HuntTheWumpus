@@ -8,10 +8,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("HuntTheWumpusXNAGame")]
 [assembly: AssemblyProduct("HuntTheWumpusXNAGame")]
 [assembly: AssemblyDescription("")]
-[assembly: AssemblyCompany("
-			")]
-[assembly: AssemblyCopyright("Copyright © 
-			 2014")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyCopyright("Copyright © 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
