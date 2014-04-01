@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
 
 namespace HuntTheWumpusXNAGame
 {
@@ -24,31 +25,31 @@ namespace HuntTheWumpusXNAGame
         //uses an array to load in the data from an xml file or potentially from an online source
         public Question[] QuestionSet = new Question[3];
         public int currentQnumber = 0;
+        XmlDocument database;
 
         public Trivia()
         {
-            //hard-coding declarations of storing the questions in the array
-            QuestionSet[0] = new Question();
-            QuestionSet[0].questionText = "How many in a dozen?";
-            QuestionSet[0].answer = 2;
-            QuestionSet[0].choice1 = "13";
-            QuestionSet[0].choice2 = "12";
-            QuestionSet[0].choice3 = "9";
-            QuestionSet[0].choice4 = "10";
-            QuestionSet[1] = new Question();
-            QuestionSet[1].questionText = "What color was George Washington's white horse?";
-            QuestionSet[1].answer = 4;
-            QuestionSet[1].choice1 = "Blue";
-            QuestionSet[1].choice2 = "Brown";
-            QuestionSet[1].choice3 = "Black";
-            QuestionSet[1].choice4 = "White";
-            QuestionSet[2] = new Question();
-            QuestionSet[2].questionText = "Who's buried in Grant's tomb?";
-            QuestionSet[2].answer = 1;
-            QuestionSet[2].choice1 = "Grant";
-            QuestionSet[2].choice2 = "Betty";
-            QuestionSet[2].choice3 = "John";
-            QuestionSet[2].choice4 = "Lucy";
+            //populating the array from the xml document
+            database = new XmlDocument();
+            database.Load("Trivia.xml");
+            XmlNodeList trivia = database.GetElementsByTagName("Trivia");
+            XmlNodeList question = database.GetElementsByTagName("Question");
+            XmlNodeList choice1 = database.GetElementsByTagName("Choice1");
+            XmlNodeList choice2 = database.GetElementsByTagName("Choice2");
+            XmlNodeList choice3 = database.GetElementsByTagName("Choice3");
+            XmlNodeList choice4 = database.GetElementsByTagName("Choice4");
+            XmlNodeList answer = database.GetElementsByTagName("Answer");
+
+            for (int i = 0; i < trivia.Count; i++)
+            {
+                QuestionSet[i] = new Question();
+                QuestionSet[i].questionText = question[i].InnerText;
+                QuestionSet[i].answer = Convert.ToInt32(answer[i].InnerText);
+                QuestionSet[i].choice1 = choice1[i].InnerText;
+                QuestionSet[i].choice2 = choice2[i].InnerText;
+                QuestionSet[i].choice3 = choice3[i].InnerText;
+                QuestionSet[i].choice4 = choice4[i].InnerText;
+            }
         }
 
         public void SortTrivia()

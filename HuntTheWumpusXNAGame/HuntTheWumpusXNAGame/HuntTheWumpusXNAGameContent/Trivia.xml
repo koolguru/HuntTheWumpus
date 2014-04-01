@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Triv>
+  <Trivia id="1">
+    <Question>What team won the MLS Cup in 2009?</Question>
+    <Choice1>Columbus Crew</Choice1>
+    <Choice2>Real Salt Lake</Choice2>
+    <Choice3>Los Angeles Galaxy</Choice3>
+    <Choice4>Seattle Sounders</Choice4>
+    <Answer>2</Answer>
+  </Trivia>
+
+  <Trivia id="2">
+    <Question>What is the soccer term for the kick after a foul?</Question>
+    <Choice1>Clear</Choice1>
+    <Choice2>Cross</Choice2>
+    <Choice3>Free Kick</Choice3>
+    <Choice4>Bicycle Kick</Choice4>
+    <Answer>3</Answer>
+  </Trivia>
+
+  <Trivia id="3">
+    <Question>In ancient folklore, which creatures chose their mates on February 14th?</Question>
+    <Choice1>Deer</Choice1>
+    <Choice2>Birds</Choice2>
+    <Choice3>Sheep</Choice3>
+    <Choice4>Lions</Choice4>
+    <Answer>2</Answer>
+  </Trivia>
+  
+</Triv>
