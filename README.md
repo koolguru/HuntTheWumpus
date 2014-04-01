@@ -2,8 +2,8 @@ HuntTheWumpus
 =============
 
 This is our teams official hunt the wumpus project
-
-WHOO DEVANSH IS HERE.
+==
+Hey Guys, forget about GitBash, get SmartGit. It's 90% easier to use, no command line tinkering or re-entering your login every time you commit/push. Get it from here: http://www.syntevo.com/download/smartgithg/smartgithg-win32-setup-jre-5_0_8.zip or download the .zip in this repo. Enjoy the collaboration.
 =======
 Contributing
 ============

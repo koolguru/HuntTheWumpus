@@ -17,17 +17,21 @@ namespace HuntTheWumpusXNAGame
     public class NodeTest
     {
         public bool[] Connections;
-        public NodeTest(bool[] Connections)
+        public Vector2 pos;
+        public NodeTest(bool[] Connections, Vector2 pos)
         {
             this.Connections = Connections;
+            this.pos = pos;
         }
     }
     public class PlayerTest
     {
         public NodeTest room;
-        public PlayerTest(NodeTest room)
+        public Rectangle bounding;
+        public PlayerTest(NodeTest room, Rectangle bounding)
         {
             this.room = room;
+            this.bounding = bounding;
         }
     }
     public class Game1 : Microsoft.Xna.Framework.Game
@@ -35,12 +39,17 @@ namespace HuntTheWumpusXNAGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Texture2D caveTex;
-        Texture2D doorVert;
-        Texture2D door30;
-        Texture2D door60;
         PlayerTest player;
-        NodeTest room;
         bool[] doors;
+        Texture2D edge;
+        List<NodeTest> nodes;
+        Texture2D playerTex;
+        Texture2D twelve;
+        Texture2D two;
+        Texture2D four;
+        Texture2D six;
+        Texture2D eight;
+        Texture2D ten;
 
         public Game1()
         {
@@ -70,14 +79,21 @@ namespace HuntTheWumpusXNAGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             //Define all variables not defined in Initizalize
-            doors = new bool[] { true, true, true, false, false, false };
-            room = new NodeTest(doors);
-            player = new PlayerTest(room);
+            doors = new bool[] { true, false, true, true, false, false };
+            nodes = new List<NodeTest>();
+            nodes.Add(new NodeTest(doors, new Vector2(200, 0)));
+            nodes.Add(new NodeTest(doors, new Vector2(50, 100)));
+            player = new PlayerTest(nodes[0], new Rectangle(350, 100, 50, 50));
+            playerTex = Content.Load<Texture2D>("Player");
+            twelve = Content.Load<Texture2D>("0");
+            two = Content.Load<Texture2D>("1");
+            four = Content.Load<Texture2D>("2");
+            six = Content.Load<Texture2D>("3");
+            eight = Content.Load<Texture2D>("4");
+            ten = Content.Load<Texture2D>("5");
             //Load Content
             caveTex = Content.Load<Texture2D>("Cave");
-            doorVert = Content.Load<Texture2D>("Door");
-            door30 = Content.Load<Texture2D>("Door30");
-            door60 = Content.Load<Texture2D>("Door60");
+            edge = Content.Load<Texture2D>("ViewportEdge");
         }
 
         /// <summary>
@@ -99,7 +115,34 @@ namespace HuntTheWumpusXNAGame
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
-
+            if (Keyboard.GetState().IsKeyDown(Keys.W))
+            {
+                foreach (NodeTest n in nodes)
+                {
+                    n.pos.Y++;
+                }
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.D))
+            {
+                foreach (NodeTest n in nodes)
+                {
+                    n.pos.X--;
+                }
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.S))
+            {
+                foreach (NodeTest n in nodes)
+                {
+                    n.pos.Y--;
+                }
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
+            {
+                foreach (NodeTest n in nodes)
+                {
+                    n.pos.X++;
+                }
+            }
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -113,31 +156,36 @@ namespace HuntTheWumpusXNAGame
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
-            spriteBatch.Draw(caveTex, new Rectangle(300, 50, 200, 200), Color.White);
-            if (player.room.Connections[0])
+            foreach (NodeTest n in nodes)
             {
-                spriteBatch.Draw(doorVert, new Rectangle(375, 0, 50, 50), Color.White);
+                spriteBatch.Draw(caveTex, new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200), Color.White);
+                if (n.Connections[0])
+                {
+                    spriteBatch.Draw(twelve, new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200), Color.White);
+                }
+                if (n.Connections[1])
+                {
+                    spriteBatch.Draw(two, new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200), Color.White);
+                }
+                if (n.Connections[2])
+                {
+                    spriteBatch.Draw(four, new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200), Color.White);
+                }
+                if (n.Connections[3])
+                {
+                    spriteBatch.Draw(six, new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200), Color.White);
+                }
+                if (n.Connections[4])
+                {
+                    spriteBatch.Draw(eight, new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200), Color.White);
+                }
+                if (n.Connections[5])
+                {
+                    spriteBatch.Draw(ten, new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200), Color.White);
+                }
             }
-            if (player.room.Connections[1])
-            {
-                spriteBatch.Draw(door60, new Rectangle(460, 50, 70, 70), Color.White);
-            }
-            if (player.room.Connections[2])
-            {
-                spriteBatch.Draw(door30, new Rectangle(460, 180, 70, 70), Color.White);
-            }
-            if (player.room.Connections[3])
-            {
-                spriteBatch.Draw(doorVert, new Rectangle(375, 250, 50, 50), Color.White);
-            }
-            if (player.room.Connections[4])
-            {
-                spriteBatch.Draw(door60, new Rectangle(270, 180, 70, 70), Color.White);
-            }
-            if (player.room.Connections[5])
-            {
-                spriteBatch.Draw(door30, new Rectangle(270, 50, 70, 70), Color.White);
-            }
+            spriteBatch.Draw(edge, new Rectangle(0, 0, 800, 480), Color.White);
+            spriteBatch.Draw(playerTex, new Rectangle(350, 100, 50, 50), Color.White);
             spriteBatch.End();
             base.Draw(gameTime);
         }
