@@ -119,7 +119,7 @@ namespace HuntTheWumpusXNAGame
             {
                 foreach (NodeTest n in nodes)
                 {
-                    n.pos.Y++;
+                        n.pos.Y++;
                 }
             }
             if (Keyboard.GetState().IsKeyDown(Keys.D))
