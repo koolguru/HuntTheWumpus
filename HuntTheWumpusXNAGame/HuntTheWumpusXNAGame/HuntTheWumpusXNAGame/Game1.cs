@@ -50,6 +50,7 @@ namespace HuntTheWumpusXNAGame
         Texture2D six;
         Texture2D eight;
         Texture2D ten;
+        enum GameState { Menu, MainGame, GameOver };
 
         public Game1()
         {
@@ -94,6 +95,7 @@ namespace HuntTheWumpusXNAGame
             //Load Content
             caveTex = Content.Load<Texture2D>("Cave");
             edge = Content.Load<Texture2D>("ViewportEdge");
+            
         }
 
         /// <summary>
