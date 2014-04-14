@@ -22,9 +22,7 @@ C:\Users\s-planum\AppData\Local\Programs\Git\HuntTheWumpusNotRussel\WumpusTestMa
 =======
 C:\Users\s-jtayade\Documents\HuntTheWumpus\WumpusTestMaster\obj\x86\Debug\WumpusTestMaster.exe
 C:\Users\s-jtayade\Documents\HuntTheWumpus\WumpusTestMaster\obj\x86\Debug\WumpusTestMaster.pdb
-<<<<<<< HEAD
 >>>>>>> f09186714d9de1a11ea9ea7c8f475ddabfbafbf9
-=======
 C:\Users\Jay\Documents\Dev\HuntTheWumpus\WumpusTestMaster\obj\x86\Debug\WumpusTestMaster.exe
 C:\Users\Jay\Documents\Dev\HuntTheWumpus\WumpusTestMaster\obj\x86\Debug\WumpusTestMaster.pdb
 C:\Users\Jay\Documents\Dev\HuntTheWumpus\WumpusTestMaster\obj\x86\Debug\WumpusTestMaster.csprojResolveAssemblyReference.cache
