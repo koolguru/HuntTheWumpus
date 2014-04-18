@@ -50,7 +50,17 @@ namespace HuntTheWumpusXNAGame
         Texture2D six;
         Texture2D eight;
         Texture2D ten;
+        Trivia trivia;
+        TriviaQuestion tQuestion;
+        TriviaAnswer tAnswerA;
+        TriviaAnswer tAnswerB;
+        TriviaAnswer tAnswerC;
+        TriviaAnswer tAnswerD;
+        Question question;
         enum GameState { Menu, MainGame, GameOver };
+        SpriteFont spriteFont;
+        KeyboardState oldState;
+        int score;
 
         public Game1()
         {
@@ -95,7 +105,14 @@ namespace HuntTheWumpusXNAGame
             //Load Content
             caveTex = Content.Load<Texture2D>("Cave");
             edge = Content.Load<Texture2D>("ViewportEdge");
-            
+            trivia = new Trivia();
+            tQuestion = new TriviaQuestion("", 0);
+            tAnswerA = new TriviaAnswer("", 1);
+            tAnswerB = new TriviaAnswer("", 2);
+            tAnswerC = new TriviaAnswer("", 3);
+            tAnswerD = new TriviaAnswer("", 4);
+            spriteFont = Content.Load<SpriteFont>("SpriteFont1");
+            oldState = Keyboard.GetState();
         }
 
         /// <summary>
@@ -146,7 +163,66 @@ namespace HuntTheWumpusXNAGame
                 }
             }
             // TODO: Add your update logic here
-
+            if (Keyboard.GetState().IsKeyDown(Keys.R) && !oldState.IsKeyDown(Keys.R))
+            {
+                UpdateTrivia();
+            }
+            oldState = Keyboard.GetState();
+            if (Mouse.GetState().LeftButton.Equals(ButtonState.Pressed))
+            {
+                if (new Rectangle(20, 35 + 16, Convert.ToInt32(spriteFont.MeasureString(tAnswerA.question).X), 16).Intersects(new Rectangle(Mouse.GetState().X, Mouse.GetState().Y, 1, 1)))
+                {
+                    if (question.answer == 1)
+                    {
+                        score++;
+                    }
+                    else
+                    {
+                        score--;
+                    }
+                    ClearTrivia();
+                }
+                else if (new Rectangle(20, 350 + 32, Convert.ToInt32(spriteFont.MeasureString(tAnswerB.question).X), 16).Intersects(new Rectangle(Mouse.GetState().X, Mouse.GetState().Y, 1, 1)))
+                {
+                    if (question.answer == 2)
+                    {
+                        score++;
+                    }
+                    else
+                    {
+                        score--;
+                    }
+                    ClearTrivia();
+                }
+                else if (new Rectangle(20, 350 + 48, Convert.ToInt32(spriteFont.MeasureString(tAnswerC.question).X), 16).Intersects(new Rectangle(Mouse.GetState().X, Mouse.GetState().Y, 1, 1)))
+                {
+                    if (question.answer == 3)
+                    {
+                        score++;
+                    }
+                    else
+                    {
+                        score--;
+                    }
+                    ClearTrivia();
+                }
+                else if (new Rectangle(20, 350 + 64, Convert.ToInt32(spriteFont.MeasureString(tAnswerD.question).X), 16).Intersects(new Rectangle(Mouse.GetState().X, Mouse.GetState().Y, 1, 1)))
+                {
+                    if (question.answer == 4)
+                    {
+                        score++;
+                    }
+                    else
+                    {
+                        score--;
+                    }
+                    ClearTrivia();
+                }
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.L))
+            {
+                ClearTrivia();
+            }
             base.Update(gameTime);
         }
 
@@ -154,6 +230,25 @@ namespace HuntTheWumpusXNAGame
         /// This is called when the game should draw itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        public void UpdateTrivia()
+        {
+            question = trivia.FetchQuestion();
+            tQuestion.question = question.questionText;
+            tQuestion.correctAnswer = question.answer;
+            tAnswerA.question = question.choice1;
+            tAnswerB.question = question.choice2;
+            tAnswerC.question = question.choice3;
+            tAnswerD.question = question.choice4;
+        }
+        public void ClearTrivia()
+        {
+            tQuestion.question = "";
+            tQuestion.correctAnswer = 0;
+            tAnswerA.question = "";
+            tAnswerB.question = "";
+            tAnswerC.question = "";
+            tAnswerD.question = "";
+        }
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
@@ -188,6 +283,12 @@ namespace HuntTheWumpusXNAGame
             }
             spriteBatch.Draw(edge, new Rectangle(0, 0, 800, 480), Color.White);
             spriteBatch.Draw(playerTex, new Rectangle(350, 100, 50, 50), Color.White);
+            spriteBatch.DrawString(spriteFont, tQuestion.question, new Vector2(20, 350), Color.Gold);
+            spriteBatch.DrawString(spriteFont, tAnswerA.question, tAnswerA.bounding, Color.Gold);
+            spriteBatch.DrawString(spriteFont, tAnswerB.question, tAnswerB.bounding, Color.Gold);
+            spriteBatch.DrawString(spriteFont, tAnswerC.question, tAnswerC.bounding, Color.Gold);
+            spriteBatch.DrawString(spriteFont, tAnswerD.question, tAnswerD.bounding, Color.Gold);
+            spriteBatch.DrawString(spriteFont, score.ToString(), new Vector2(0, 0), Color.Gold);
             spriteBatch.End();
             base.Draw(gameTime);
         }

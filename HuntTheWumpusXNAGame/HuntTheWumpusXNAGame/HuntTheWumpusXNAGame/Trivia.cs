@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace HuntTheWumpusXNAGame
 {
@@ -18,12 +20,21 @@ namespace HuntTheWumpusXNAGame
         public string choice2;
         public string choice3;
         public string choice4;
+        public Question(string questionText, int answer, string choice1, string choice2, string choice3, string choice4)
+        {
+            this.questionText = questionText;
+            this.answer = answer;
+            this.choice1 = choice1;
+            this.choice2 = choice2;
+            this.choice3 = choice3;
+            this.choice4 = choice4;
+        }
     }
 
     class Trivia
     {
         //uses an array to load in the data from an xml file or potentially from an online source
-        public Question[] QuestionSet = new Question[3];
+        public List<Question> QuestionSet = new List<Question>();
         public int currentQnumber = 0;
         XmlDocument database;
 
@@ -42,13 +53,7 @@ namespace HuntTheWumpusXNAGame
 
             for (int i = 0; i < trivia.Count; i++)
             {
-                QuestionSet[i] = new Question();
-                QuestionSet[i].questionText = question[i].InnerText;
-                QuestionSet[i].answer = Convert.ToInt32(answer[i].InnerText);
-                QuestionSet[i].choice1 = choice1[i].InnerText;
-                QuestionSet[i].choice2 = choice2[i].InnerText;
-                QuestionSet[i].choice3 = choice3[i].InnerText;
-                QuestionSet[i].choice4 = choice4[i].InnerText;
+                QuestionSet.Add(new Question(question[i].InnerText, Convert.ToInt32(answer[i].InnerText), choice1[i].InnerText, choice2[i].InnerText, choice3[i].InnerText, choice4[i].InnerText));
             }
         }
 
@@ -63,6 +68,10 @@ namespace HuntTheWumpusXNAGame
         {
             //returns a question and increments the current number
             //so that questions can be stepped through in order without repeating anything
+            if (currentQnumber == QuestionSet.Count)
+            {
+                currentQnumber = 0;
+            }
             return QuestionSet[currentQnumber++];
 
         }
@@ -95,4 +104,23 @@ namespace HuntTheWumpusXNAGame
     //            label3.Text = "Correct!";
     //        if (playerInput != question.answer)
     //            label3.Text = "Incorrect!";
+    public class TriviaQuestion
+    {
+        public string question;
+        public int correctAnswer;
+        public TriviaQuestion(string question, int answer)
+        {
+            this.question = question;
+        }
+
+    }
+    public class TriviaAnswer : TriviaQuestion
+    {
+        public Vector2 bounding;
+        public TriviaAnswer(string answer, int number)
+            : base(answer, number)
+        {
+            this.bounding = new Vector2(20, 350 + 16 * number);
+        }
+    }
 }
