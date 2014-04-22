@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
 
 namespace HuntTheWumpusXNAGame
 {
     class HighScore
     {
-        public int NumberOfTurns { get; set; }
-        public int NumberOfArrows { get; set; }
-        public int GoldLeft { get; set; }
+        public int NumberOfTurns { get; set; } //game control
+        public int NumberOfArrows { get; set; } //player
+        public int GoldLeft { get; set; } //player
 
         public HighScore(int turns, int arrows, int gold)
         {
