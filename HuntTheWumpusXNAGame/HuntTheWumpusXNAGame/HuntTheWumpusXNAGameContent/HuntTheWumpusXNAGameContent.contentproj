@@ -100,6 +100,11 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
+    <Compile Include="UIFont.spritefont">
+      <Name>UIFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
     <None Include="Trivia.xml">
       <Name>Trivia</Name>
       <Importer>XmlImporter</Importer>
@@ -111,6 +116,18 @@
   <ItemGroup>
     <Compile Include="LineTest.png">
       <Name>LineTest</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MenuScreen1.png">
+      <Name>MenuScreen1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="MenuScreen2.png">
+      <Name>MenuScreen2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
