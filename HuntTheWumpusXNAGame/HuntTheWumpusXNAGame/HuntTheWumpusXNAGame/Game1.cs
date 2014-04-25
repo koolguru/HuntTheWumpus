@@ -30,26 +30,21 @@ namespace HuntTheWumpusXNAGame
         public void Update()
         {
             this.hex = new Hexagon(Convert.ToInt32(pos.X), Convert.ToInt32(pos.Y), 200, 200, this);
-            if (this.pos.X > .9 * Game1.graphics.GraphicsDevice.Viewport.Width)
-            {
-                pos.X = Convert.ToInt32(.1 * Game1.graphics.GraphicsDevice.Viewport.Width) + 1;
-            }
-            else if (pos.X < .1 * Game1.graphics.GraphicsDevice.Viewport.Width)
-            {
-                pos.X = Convert.ToInt32(.9 * Game1.graphics.GraphicsDevice.Viewport.Width) - 1;
-            }
+            //if (this.pos.X > .9 * Game1.graphics.GraphicsDevice.Viewport.Width)
+            //{
+            //    pos.X = Convert.ToInt32(.1 * Game1.graphics.GraphicsDevice.Viewport.Width) + 1;
+            //}
+            //else if (pos.X < .1 * Game1.graphics.GraphicsDevice.Viewport.Width)
+            //{
+            //    pos.X = Convert.ToInt32(.9 * Game1.graphics.GraphicsDevice.Viewport.Width) - 1;
+            //}
         }
     }
     public class PlayerTest
     {
         public NodeTest room;
         public Rectangle bounding;
-        public Vector2 topLeft;
-        public Vector2 topRight;
-        public Vector2 botLeft;
-        public Vector2 botRight;
-        public Vector2 top;
-        public Vector2 bot;
+        public NodeTest targetRoom;
         public PlayerTest(NodeTest room, Rectangle bounding)
         {
             this.room = room;
@@ -66,52 +61,97 @@ namespace HuntTheWumpusXNAGame
                 }
             }
             room.Update();
-            topLeft = new Vector2(bounding.X, 100);
-            topRight = new Vector2(bounding.X + 50, 100);
-            botLeft = new Vector2(bounding.X, 150);
-            botRight = new Vector2(bounding.X + 50, 150);
-            top = new Vector2(bounding.X + 25, 100);
-            bot = new Vector2(bounding.X + 25, 150);
-            if (Keyboard.GetState().IsKeyDown(Keys.W) && room.hex.testUp(this))
-            {
-                if (room.hex.testUp(this))
-                {
-                    foreach (NodeTest n in nodes)
-                    {
-                        n.pos.Y++;
-                    }
-                }
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.D))
-            {
-                if (room.hex.testRight(this))
-                {
-                    foreach (NodeTest n in nodes)
-                    {
-                        n.pos.X--;
-                    }
-                }
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.S))
-            {
-                if (room.hex.testDown(this))
-                {
-                    foreach (NodeTest n in nodes)
-                    {
-                        n.pos.Y--;
-                    }
-                }
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.A))
-            {
-                if (room.hex.testLeft(this))
-                {
-                    foreach (NodeTest n in nodes)
-                    {
-                        n.pos.X++;
-                    }
-                }
-            }
+        //    if (Keyboard.GetState().IsKeyDown(Keys.W) && room.hex.testUp(this))
+        //    {
+        //        if (CheckCollision("up"))
+        //        {
+        //            foreach (NodeTest n in nodes)
+        //            {
+        //                n.pos.Y++;
+        //            }
+        //        }
+        //    }
+        //    if (Keyboard.GetState().IsKeyDown(Keys.D))
+        //    {
+        //        if (CheckCollision("right"))
+        //        {
+        //            foreach (NodeTest n in nodes)
+        //            {
+        //                n.pos.X--;
+        //            }
+        //        }
+        //    }
+        //    if (Keyboard.GetState().IsKeyDown(Keys.S))
+        //    {
+        //        if (CheckCollision("down"))
+        //        {
+        //            foreach (NodeTest n in nodes)
+        //            {
+        //                n.pos.Y--;
+        //            }
+        //        }
+        //    }
+        //    if (Keyboard.GetState().IsKeyDown(Keys.A))
+        //    {
+        //        if (CheckCollision("left"))
+        //        {
+        //            foreach (NodeTest n in nodes)
+        //            {
+        //                n.pos.X++;
+        //            }
+        //        }
+        //    }
+        //}
+        //public bool CheckCollision(string direction)
+        //{
+        //    List<Color[]> caveWalls = new List<Color[]>();
+        //    if (direction == "up" || direction == "down")
+        //    {
+        //        caveWalls.AddRange(new List<Color[]> { new Color[40000], new Color[40000], new Color[40000] });
+        //    }
+        //    else if (direction == "left" || direction == "right")
+        //    {
+        //        caveWalls.AddRange(new List<Color[]> { new Color[40000], new Color[40000] });
+        //    }
+        //    if (direction == "down")
+        //    {
+        //        Game1.four.GetData(caveWalls[0]);
+        //        Game1.six.GetData(caveWalls[1]);
+        //        Game1.eight.GetData(caveWalls[2]);
+        //    }
+        //    else if (direction == "up")
+        //    {
+        //        Game1.ten.GetData(caveWalls[0]);
+        //        Game1.twelve.GetData(caveWalls[1]);
+        //        Game1.two.GetData(caveWalls[2]);
+        //    }
+        //    else if (direction == "left")
+        //    {
+        //        Game1.two.GetData(caveWalls[0]);
+        //        Game1.four.GetData(caveWalls[1]);
+        //    }
+        //    else if (direction == "right")
+        //    {
+        //        Game1.eight.GetData(caveWalls[0]);
+        //        Game1.ten.GetData(caveWalls[1]);
+        //    }
+        //    foreach (Color[] colors in caveWalls)
+        //    {
+        //        for (int i = bounding.Top; i < bounding.Bottom; i++)
+        //        {
+        //            for (int j = bounding.Left; j < bounding.Right; j++)
+        //            {
+        //                if (colors[i * 200 + j] == Color.Yellow)
+        //                {
+        //                    if (new Rectangle(i, j, 1, 1).Intersects(bounding))
+        //                    {
+        //                        return false;
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    return true;
         }
     }
     public class Button
@@ -140,12 +180,12 @@ namespace HuntTheWumpusXNAGame
         Texture2D edge;
         public static List<NodeTest> nodes;
         Texture2D playerTex;
-        Texture2D twelve;
-        Texture2D two;
-        Texture2D four;
-        Texture2D six;
-        Texture2D eight;
-        Texture2D ten;
+        public static Texture2D twelve;
+        public static Texture2D two;
+        public static Texture2D four;
+        public static Texture2D six;
+        public static Texture2D eight;
+        public static Texture2D ten;
         Texture2D lineTest;
         Trivia trivia;
         TriviaQuestion tQuestion;
@@ -157,6 +197,7 @@ namespace HuntTheWumpusXNAGame
         enum GameState { Menu, MainGame, GameOver };
         SpriteFont spriteFont;
         KeyboardState oldState;
+        MouseState oldMouse;
         int score;
         Texture2D dummyTexture;
         int currentTurn = 0;
@@ -167,6 +208,9 @@ namespace HuntTheWumpusXNAGame
         List<Node> engineNodes;
         Button startGame;
         bool debug;
+        Vector2 newPos;
+        Vector2 oldPos;
+        public static HighScore highScore;
 
         public Game1()
         {
@@ -178,6 +222,10 @@ namespace HuntTheWumpusXNAGame
             graphics.ApplyChanges();
             //Make game FullScreen
             //graphics.ToggleFullScreen();
+        }
+        public static void Exit()
+        {
+            Game1.Exit();
         }
 
         /// <summary>
@@ -222,37 +270,7 @@ namespace HuntTheWumpusXNAGame
             {
                 nt.node.room = nt;
             }
-            for (int i = 0; i < 30; i++)
-            {
-                foreach (Node node2 in nodes[i].node.connections)
-                {
-                    if (nodes[i].node.room.hex.x == node2.room.hex.x && nodes[i].node.room.hex.y < node2.room.hex.y)
-                    {
-                        nodes[i].Connections[0] = true;
-                    }
-                    else if (nodes[i].node.room.hex.x > node2.room.hex.x && nodes[i].node.room.hex.y < node2.room.hex.y)
-                    {
-                        nodes[i].Connections[1] = true;
-                    }
-                    else if (nodes[i].node.room.hex.x > node2.room.hex.x && nodes[i].node.room.hex.y > node2.room.hex.y)
-                    {
-                        nodes[i].Connections[2] = true;
-                    }
-                    else if (nodes[i].node.room.hex.x == node2.room.hex.x && nodes[i].node.room.hex.y > node2.room.hex.y)
-                    {
-                        nodes[i].Connections[3] = true;
-                    }
-                    else if (nodes[i].node.room.hex.x < node2.room.hex.x && nodes[i].node.room.hex.y > node2.room.hex.y)
-                    {
-                        nodes[i].Connections[4] = true;
-                    }
-                    else if (nodes[i].node.room.hex.x < node2.room.hex.x && nodes[i].node.room.hex.y < node2.room.hex.y)
-                    {
-                        nodes[i].Connections[5] = true;
-                    }
-                }
-                startGame = new Button(530, 480, 405, 150);
-            }            
+            startGame = new Button(530, 480, 405, 150);            
             playerTex = Content.Load<Texture2D>("Player");
             player = new PlayerTest(nodes[0], new Rectangle((graphics.GraphicsDevice.Viewport.Width / 2) - (playerTex.Width / 2), 100, 50, 50));
             twelve = Content.Load<Texture2D>("0");
@@ -277,6 +295,9 @@ namespace HuntTheWumpusXNAGame
             dummyTexture = new Texture2D(GraphicsDevice, 1, 1); //Creates a dummy texture to make solid black rectangles
             dummyTexture.SetData(new Color[] { Color.Black });
             gamestate = GameState.Menu; //Starts game on menu
+            newPos = new Vector2(player.room.pos.X + 100, player.room.pos.Y + 100);
+            player.targetRoom = player.room;
+            highScore = new HighScore(0, 0, 0);
         }
 
         /// <summary>
@@ -296,8 +317,6 @@ namespace HuntTheWumpusXNAGame
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
             player.room.hex.Update();
             // TODO: Add your update logic here
             ///////////////////
@@ -329,65 +348,95 @@ namespace HuntTheWumpusXNAGame
                 }
                 player.room.hex.Update();
                 player.Update(nodes);
+                Vector2 speed = new Vector2(0, 0);
+                double hypotinuse = Math.Sqrt(Math.Pow((player.bounding.Center.X - newPos.X), 2) + Math.Pow((player.bounding.Center.Y - newPos.Y + 16), 2));
+                if (hypotinuse != 0)
+                {
+                    speed = new Vector2(Convert.ToSingle((player.bounding.Center.X - newPos.X) / hypotinuse), Convert.ToSingle((player.bounding.Center.Y - newPos.Y) / hypotinuse));
+                }
+                    foreach (NodeTest n in nodes)
+                    {
+                        if (new Rectangle(player.bounding.X + 25, player.bounding.Y + 25, 1, 1).Intersects(new Rectangle(Convert.ToInt32(player.targetRoom.pos.X + 100), Convert.ToInt32(player.targetRoom.pos.Y + 100), 1, 10)))
+                        {
+                            speed = new Vector2(0, 0);
+                        }
+                    }
+                    foreach (NodeTest n in nodes)
+                    {
+                        n.pos += speed;
+                    }
+                    if (Mouse.GetState().LeftButton.Equals(ButtonState.Pressed) && oldMouse.LeftButton.Equals(ButtonState.Released))
+                    {
+                        foreach (NodeTest n in nodes)
+                        {
+                            if (new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200).Intersects(new Rectangle(Mouse.GetState().X, Mouse.GetState().Y, 1, 1)))
+                            {
+                                if (player.room.node.connections.Contains(n.node))
+                                {
+                                    oldPos = new Vector2(player.room.pos.X + 100, player.room.pos.Y + 100);
+                                    newPos = new Vector2(n.pos.X + 100, n.pos.Y + 100);
+                                    player.targetRoom = n;
+                                }
+                            }
+                        }
+                        if (new Rectangle(20, Convert.ToInt32(tAnswerA.bounding.Y), Convert.ToInt32(spriteFont.MeasureString(tAnswerA.question).X), 16).Intersects(new Rectangle(Mouse.GetState().X, Mouse.GetState().Y, 1, 1)))
+                        {
+                            if (question.answer == 1)
+                            {
+                                score++;
+                            }
+                            else
+                            {
+                                score--;
+                            }
+                            ClearTrivia();
+                        }
+                        else if (new Rectangle(20, Convert.ToInt32(tAnswerB.bounding.Y), Convert.ToInt32(spriteFont.MeasureString(tAnswerB.question).X), 16).Intersects(new Rectangle(Mouse.GetState().X, Mouse.GetState().Y, 1, 1)))
+                        {
+                            if (question.answer == 2)
+                            {
+                                score++;
+                            }
+                            else
+                            {
+                                score--;
+                            }
+                            ClearTrivia();
+                        }
+                        else if (new Rectangle(20, Convert.ToInt32(tAnswerC.bounding.Y), Convert.ToInt32(spriteFont.MeasureString(tAnswerC.question).X), 16).Intersects(new Rectangle(Mouse.GetState().X, Mouse.GetState().Y, 1, 1)))
+                        {
+                            if (question.answer == 3)
+                            {
+                                score++;
+                            }
+                            else
+                            {
+                                score--;
+                            }
+                            ClearTrivia();
+                        }
+                        else if (new Rectangle(20, Convert.ToInt32(tAnswerD.bounding.Y), Convert.ToInt32(spriteFont.MeasureString(tAnswerD.question).X), 16).Intersects(new Rectangle(Mouse.GetState().X, Mouse.GetState().Y, 1, 1)))
+                        {
+                            if (question.answer == 4)
+                            {
+                                score++;
+                            }
+                            else
+                            {
+                                score--;
+                            }
+                            ClearTrivia();
+                        }
+                    }
+                    if (Keyboard.GetState().IsKeyDown(Keys.L))
+                    {
+                        ClearTrivia();
+                    }
+                }
+                oldMouse = Mouse.GetState();
                 oldState = Keyboard.GetState();
-                if (Mouse.GetState().LeftButton.Equals(ButtonState.Pressed))
-                {
-                    if (new Rectangle(20, 35 + 16, Convert.ToInt32(spriteFont.MeasureString(tAnswerA.question).X), 16).Intersects(new Rectangle(Mouse.GetState().X, Mouse.GetState().Y, 1, 1)))
-                    {
-                        if (question.answer == 1)
-                        {
-                            score++;
-                        }
-                        else
-                        {
-                            score--;
-                        }
-                        ClearTrivia();
-                    }
-                    else if (new Rectangle(20, 350 + 32, Convert.ToInt32(spriteFont.MeasureString(tAnswerB.question).X), 16).Intersects(new Rectangle(Mouse.GetState().X, Mouse.GetState().Y, 1, 1)))
-                    {
-                        if (question.answer == 2)
-                        {
-                            score++;
-                        }
-                        else
-                        {
-                            score--;
-                        }
-                        ClearTrivia();
-                    }
-                    else if (new Rectangle(20, 350 + 48, Convert.ToInt32(spriteFont.MeasureString(tAnswerC.question).X), 16).Intersects(new Rectangle(Mouse.GetState().X, Mouse.GetState().Y, 1, 1)))
-                    {
-                        if (question.answer == 3)
-                        {
-                            score++;
-                        }
-                        else
-                        {
-                            score--;
-                        }
-                        ClearTrivia();
-                    }
-                    else if (new Rectangle(20, 350 + 64, Convert.ToInt32(spriteFont.MeasureString(tAnswerD.question).X), 16).Intersects(new Rectangle(Mouse.GetState().X, Mouse.GetState().Y, 1, 1)))
-                    {
-                        if (question.answer == 4)
-                        {
-                            score++;
-                        }
-                        else
-                        {
-                            score--;
-                        }
-                        ClearTrivia();
-                    }
-                }
-                if (Keyboard.GetState().IsKeyDown(Keys.L))
-                {
-                    ClearTrivia();
-                }
+                base.Update(gameTime);
             }
-            base.Update(gameTime);
-        }
 
         /// <summary>
         /// This is called when the game should draw itself.
@@ -417,7 +466,7 @@ namespace HuntTheWumpusXNAGame
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
             if (gamestate == GameState.Menu) //When game is on Menu
-                spriteBatch.Draw(menuTex, new Vector2(0, 0), Color.White); //Draws Menu Background
+                spriteBatch.Draw(menuTex, new Rectangle(0, 0,graphics.GraphicsDevice.Viewport.Width, graphics.GraphicsDevice.Viewport.Height), Color.White); //Draws Menu Background
             if (gamestate == GameState.MainGame)
             {
                 //UI Draw Functions
@@ -428,6 +477,9 @@ namespace HuntTheWumpusXNAGame
                 foreach (NodeTest n in nodes)
                 {
                     spriteBatch.Draw(caveTex, new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200), Color.White);
+                }
+                foreach (NodeTest n in nodes)
+                {
                     if (n.Connections[0])
                     {
                         spriteBatch.Draw(twelve, new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200), Color.White);
@@ -455,12 +507,14 @@ namespace HuntTheWumpusXNAGame
                 }
                 spriteBatch.Draw(edge, new Rectangle(0, 0, graphics.GraphicsDevice.Viewport.Width, graphics.GraphicsDevice.Viewport.Height), Color.White);
                 spriteBatch.Draw(playerTex, player.bounding, Color.White);
-                spriteBatch.DrawString(spriteFont, tQuestion.question, new Vector2(20, 350), Color.Gold);
+                spriteBatch.DrawString(spriteFont, tQuestion.question, new Vector2(20, graphics.GraphicsDevice.Viewport.Height - 96), Color.Gold);
                 spriteBatch.DrawString(spriteFont, tAnswerA.question, tAnswerA.bounding, Color.Gold);
                 spriteBatch.DrawString(spriteFont, tAnswerB.question, tAnswerB.bounding, Color.Gold);
                 spriteBatch.DrawString(spriteFont, tAnswerC.question, tAnswerC.bounding, Color.Gold);
                 spriteBatch.DrawString(spriteFont, tAnswerD.question, tAnswerD.bounding, Color.Gold);
-                spriteBatch.DrawString(spriteFont, score.ToString(), new Vector2(0, 0), Color.Gold);
+                spriteBatch.DrawString(spriteFont, "Turns: " + highScore.NumberOfTurns, new Vector2(20, 20), Color.Gold);
+                spriteBatch.DrawString(spriteFont, "Gold: " + highScore.GoldLeft, new Vector2(20, 40), Color.Gold);
+                spriteBatch.DrawString(spriteFont, "Arrows: " + highScore.NumberOfArrows, new Vector2(20, 60), Color.Gold);
                 if (debug)
                 {
                     foreach (Vector2 v in player.room.hex.twelve.ints)
@@ -493,7 +547,7 @@ namespace HuntTheWumpusXNAGame
             {
                 foreach (NodeTest n in nodes)
                 {
-                    spriteBatch.DrawString(spriteFont, Convert.ToString(n.node.nodeNumber), n.pos, Color.Gold);
+                    spriteBatch.DrawString(spriteFont, Convert.ToString(n.node.nodeNumber), new Vector2(n.pos.X + 100, n.pos.Y + 100), Color.Gold);
                 }
                 spriteBatch.DrawString(spriteFont, player.room.node.connections[0].nodeNumber + ", " + player.room.node.connections[1].nodeNumber + ", " + player.room.node.connections[2].nodeNumber, new Vector2(player.room.pos.X + 30, player.room.pos.Y), Color.Gold);
             }

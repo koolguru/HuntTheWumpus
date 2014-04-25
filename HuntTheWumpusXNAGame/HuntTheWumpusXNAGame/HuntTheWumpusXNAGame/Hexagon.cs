@@ -75,6 +75,8 @@ namespace HuntTheWumpusXNAGame
             if (player.bounding.Intersects(bounding))
             {
                 player.room = this.room;
+                Game1.highScore.GoldLeft++;
+                Game1.highScore.NumberOfTurns++;
             }
         }
         public bool testUp(PlayerTest player)

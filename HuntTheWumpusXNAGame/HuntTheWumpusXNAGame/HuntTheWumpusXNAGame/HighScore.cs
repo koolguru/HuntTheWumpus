@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HuntTheWumpusXNAGame
 {
-    class HighScore
+    public class HighScore
     {
         public int NumberOfTurns { get; set; }
         public int NumberOfArrows { get; set; }
