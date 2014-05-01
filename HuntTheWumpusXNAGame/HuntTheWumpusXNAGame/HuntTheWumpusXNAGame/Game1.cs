@@ -45,10 +45,14 @@ namespace HuntTheWumpusXNAGame
         public NodeTest room;
         public Rectangle bounding;
         public NodeTest targetRoom;
+        public List<Item> items;
+        public List<NodeTest> visitedRooms;
         public PlayerTest(NodeTest room, Rectangle bounding)
         {
             this.room = room;
             this.bounding = bounding;
+            items = new List<Item>();
+            visitedRooms = new List<NodeTest>();
         }
         public void Update(List<NodeTest> nodes)
         {
@@ -59,107 +63,82 @@ namespace HuntTheWumpusXNAGame
                 {
                     node.hex.checkArea(new Point(375, 125), this);
                 }
+                if (Math.Abs(node.pos.X - room.pos.X) < 5 && Math.Abs(node.pos.Y - room.pos.Y - 200) < 5)
+                {
+                    if (room.node.connections.Contains(node.node))
+                    {
+                        room.Connections[0] = true;
+                    }
+                    else
+                    {
+                        room.Connections[0] = false;
+                    }
+                }
+                else if (Math.Abs(node.pos.X - room.pos.X - 150) < 5 && Math.Abs(node.pos.Y - room.pos.Y - 100) < 5)
+                {
+                    if (room.node.connections.Contains(node.node))
+                    {
+                        room.Connections[1] = true;
+                    }
+                    else
+                    {
+                        room.Connections[1] = false;
+                    }
+                }
+                else if (Math.Abs(node.pos.X - room.pos.X - 150) < 5 && Math.Abs(node.pos.Y - room.pos.Y + 100) < 5)
+                {
+                    if (room.node.connections.Contains(node.node))
+                    {
+                        room.Connections[2] = true;
+                    }
+                    else
+                    {
+                        room.Connections[2] = false;
+                    }
+                }
+                else if (Math.Abs(node.pos.X - room.pos.X) < 5 && Math.Abs(node.pos.Y - room.pos.Y + 200) < 5)
+                {
+                    if (room.node.connections.Contains(node.node))
+                    {
+                        room.Connections[3] = true;
+                    }
+                    else
+                    {
+                        room.Connections[3] = false;
+                    }
+                }
+                else if (Math.Abs(node.pos.X - room.pos.X + 150) < 5 && Math.Abs(node.pos.Y - room.pos.Y + 100) < 5)
+                {
+                    if (room.node.connections.Contains(node.node))
+                    {
+                        room.Connections[4] = true;
+                    }
+                    else
+                    {
+                        room.Connections[4] = false;
+                    }
+                }
+                else if (Math.Abs(node.pos.X - room.pos.X + 150) < 5 && Math.Abs(node.pos.Y - room.pos.Y - 100) < 5)
+                {
+                    if (room.node.connections.Contains(node.node))
+                    {
+                        room.Connections[5] = true;
+                    }
+                    else
+                    {
+                        room.Connections[5] = false;
+                    }
+                }
             }
             room.Update();
-        //    if (Keyboard.GetState().IsKeyDown(Keys.W) && room.hex.testUp(this))
-        //    {
-        //        if (CheckCollision("up"))
-        //        {
-        //            foreach (NodeTest n in nodes)
-        //            {
-        //                n.pos.Y++;
-        //            }
-        //        }
-        //    }
-        //    if (Keyboard.GetState().IsKeyDown(Keys.D))
-        //    {
-        //        if (CheckCollision("right"))
-        //        {
-        //            foreach (NodeTest n in nodes)
-        //            {
-        //                n.pos.X--;
-        //            }
-        //        }
-        //    }
-        //    if (Keyboard.GetState().IsKeyDown(Keys.S))
-        //    {
-        //        if (CheckCollision("down"))
-        //        {
-        //            foreach (NodeTest n in nodes)
-        //            {
-        //                n.pos.Y--;
-        //            }
-        //        }
-        //    }
-        //    if (Keyboard.GetState().IsKeyDown(Keys.A))
-        //    {
-        //        if (CheckCollision("left"))
-        //        {
-        //            foreach (NodeTest n in nodes)
-        //            {
-        //                n.pos.X++;
-        //            }
-        //        }
-        //    }
-        //}
-        //public bool CheckCollision(string direction)
-        //{
-        //    List<Color[]> caveWalls = new List<Color[]>();
-        //    if (direction == "up" || direction == "down")
-        //    {
-        //        caveWalls.AddRange(new List<Color[]> { new Color[40000], new Color[40000], new Color[40000] });
-        //    }
-        //    else if (direction == "left" || direction == "right")
-        //    {
-        //        caveWalls.AddRange(new List<Color[]> { new Color[40000], new Color[40000] });
-        //    }
-        //    if (direction == "down")
-        //    {
-        //        Game1.four.GetData(caveWalls[0]);
-        //        Game1.six.GetData(caveWalls[1]);
-        //        Game1.eight.GetData(caveWalls[2]);
-        //    }
-        //    else if (direction == "up")
-        //    {
-        //        Game1.ten.GetData(caveWalls[0]);
-        //        Game1.twelve.GetData(caveWalls[1]);
-        //        Game1.two.GetData(caveWalls[2]);
-        //    }
-        //    else if (direction == "left")
-        //    {
-        //        Game1.two.GetData(caveWalls[0]);
-        //        Game1.four.GetData(caveWalls[1]);
-        //    }
-        //    else if (direction == "right")
-        //    {
-        //        Game1.eight.GetData(caveWalls[0]);
-        //        Game1.ten.GetData(caveWalls[1]);
-        //    }
-        //    foreach (Color[] colors in caveWalls)
-        //    {
-        //        for (int i = bounding.Top; i < bounding.Bottom; i++)
-        //        {
-        //            for (int j = bounding.Left; j < bounding.Right; j++)
-        //            {
-        //                if (colors[i * 200 + j] == Color.Yellow)
-        //                {
-        //                    if (new Rectangle(i, j, 1, 1).Intersects(bounding))
-        //                    {
-        //                        return false;
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-        //    return true;
-        }
+            }
     }
     public class Button
     {
         public int x;
         public int y;
         public int width;
-        public int height;
+        public int height;  
         public Rectangle bounding;
         public Button(int x, int y, int width, int height)
         {
@@ -175,7 +154,7 @@ namespace HuntTheWumpusXNAGame
         public static GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Texture2D caveTex;
-        PlayerTest player;
+        public static PlayerTest player;
         bool[] doors;
         Texture2D edge;
         public static List<NodeTest> nodes;
@@ -209,8 +188,10 @@ namespace HuntTheWumpusXNAGame
         Button startGame;
         bool debug;
         Vector2 newPos;
-        Vector2 oldPos;
         public static HighScore highScore;
+        Texture2D caveCover;
+        Texture2D inventoryBackground;
+        Texture2D soup;
 
         public Game1()
         {
@@ -245,21 +226,15 @@ namespace HuntTheWumpusXNAGame
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
         /// </summary>
-        protected override void LoadContent()
+        public void createMap()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-            //Define all variables not defined in Initizalize
-            doors = new bool[] { true, false, true, true, false, false };
-            gamestate = GameState.Menu;
-            menuTex = Content.Load<Texture2D>("MenuScreen1");
             engine = new Engine();
             engineNodes = engine.genMap();
             nodes = new List<NodeTest>();
             for (int i = 0; i < 30; i++)
             {
-                int x = (i % 6) * 150;
-                int y = (i / 6) * 200;
+                int x = (i % 6) * 150 - 50;
+                int y = (i / 6) * 200 + 50;
                 if (i % 2 == 1)
                 {
                     y += 100;
@@ -270,6 +245,16 @@ namespace HuntTheWumpusXNAGame
             {
                 nt.node.room = nt;
             }
+        }
+        protected override void LoadContent()
+        {
+            // Create a new SpriteBatch, which can be used to draw textures.
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+            //Define all variables not defined in Initizalize
+            doors = new bool[] { true, false, true, true, false, false };
+            gamestate = GameState.Menu;
+            menuTex = Content.Load<Texture2D>("MenuScreen1");
+            createMap();
             startGame = new Button(530, 480, 405, 150);            
             playerTex = Content.Load<Texture2D>("Player");
             player = new PlayerTest(nodes[0], new Rectangle((graphics.GraphicsDevice.Viewport.Width / 2) - (playerTex.Width / 2), 100, 50, 50));
@@ -283,6 +268,7 @@ namespace HuntTheWumpusXNAGame
             //Load Content
             caveTex = Content.Load<Texture2D>("Cave");
             edge = Content.Load<Texture2D>("ViewportEdge");
+            inventoryBackground = Content.Load<Texture2D>("InventoryBackground");
             trivia = new Trivia();
             tQuestion = new TriviaQuestion("", 0);
             tAnswerA = new TriviaAnswer("", 1);
@@ -294,10 +280,13 @@ namespace HuntTheWumpusXNAGame
             oldState = Keyboard.GetState();
             dummyTexture = new Texture2D(GraphicsDevice, 1, 1); //Creates a dummy texture to make solid black rectangles
             dummyTexture.SetData(new Color[] { Color.Black });
+            caveCover = Content.Load<Texture2D>("Cover");
             gamestate = GameState.Menu; //Starts game on menu
-            newPos = new Vector2(player.room.pos.X + 100, player.room.pos.Y + 100);
-            player.targetRoom = player.room;
+            newPos = new Vector2(player.bounding.Center.X, player.bounding.Center.Y );
+            player.targetRoom = nodes[4];
             highScore = new HighScore(0, 0, 0);
+            soup = Content.Load<Texture2D>("soup");
+            player.items.Add(new Item("Bowl of Soup", "Warm and thick, just like mom used to make...", soup, new Rectangle(700, 600, 100, 150), 0));
         }
 
         /// <summary>
@@ -338,7 +327,15 @@ namespace HuntTheWumpusXNAGame
             ///////////////////
             if (gamestate == GameState.MainGame)
             {
+                Vector2 speed = new Vector2(0, 0);
                 if (Keyboard.GetState().IsKeyDown(Keys.R) && !oldState.IsKeyDown(Keys.R))
+                {
+                    speed = new Vector2(0, 0);
+                    engineNodes.Clear();
+                    nodes.Clear();
+                    createMap();
+                }
+                if (Keyboard.GetState().IsKeyDown(Keys.T) && !oldState.IsKeyDown(Keys.T))
                 {
                     UpdateTrivia();
                 }
@@ -346,36 +343,52 @@ namespace HuntTheWumpusXNAGame
                 {
                     debug = !debug;
                 }
-                player.room.hex.Update();
                 player.Update(nodes);
-                Vector2 speed = new Vector2(0, 0);
                 double hypotinuse = Math.Sqrt(Math.Pow((player.bounding.Center.X - newPos.X), 2) + Math.Pow((player.bounding.Center.Y - newPos.Y + 16), 2));
                 if (hypotinuse != 0)
                 {
                     speed = new Vector2(Convert.ToSingle((player.bounding.Center.X - newPos.X) / hypotinuse), Convert.ToSingle((player.bounding.Center.Y - newPos.Y) / hypotinuse));
                 }
-                    foreach (NodeTest n in nodes)
+                    if (new Rectangle(player.bounding.X + 25, player.bounding.Y + 25, 1, 1).Intersects(new Rectangle(Convert.ToInt32(player.targetRoom.pos.X + 100), Convert.ToInt32(player.targetRoom.pos.Y + 100), 1, 10)))
                     {
-                        if (new Rectangle(player.bounding.X + 25, player.bounding.Y + 25, 1, 1).Intersects(new Rectangle(Convert.ToInt32(player.targetRoom.pos.X + 100), Convert.ToInt32(player.targetRoom.pos.Y + 100), 1, 10)))
+                        speed = new Vector2(0, 0);
+                        if (!player.visitedRooms.Contains(player.targetRoom))
                         {
-                            speed = new Vector2(0, 0);
+                            player.visitedRooms.Add(player.targetRoom);
+                            Game1.highScore.GoldLeft++;
                         }
                     }
                     foreach (NodeTest n in nodes)
                     {
+                        if (n.pos.Y > 800)
+                        {
+                            n.pos.Y -= 1000;
+                        }
+                        else if (n.pos.Y < -200)
+                        {
+                            n.pos.Y += 1000;
+                        }
+                        if (n.pos.X > 900)
+                        {
+                            n.pos.X -= 900;
+                        }
+                        else if (n.pos.X < 0)
+                        {
+                            n.pos.X += 900;
+                        }
                         n.pos += speed;
                     }
+                    newPos = new Vector2(player.targetRoom.pos.X + 100, player.targetRoom.pos.Y + 100);
                     if (Mouse.GetState().LeftButton.Equals(ButtonState.Pressed) && oldMouse.LeftButton.Equals(ButtonState.Released))
                     {
                         foreach (NodeTest n in nodes)
                         {
                             if (new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200).Intersects(new Rectangle(Mouse.GetState().X, Mouse.GetState().Y, 1, 1)))
                             {
-                                if (player.room.node.connections.Contains(n.node))
-                                {
-                                    oldPos = new Vector2(player.room.pos.X + 100, player.room.pos.Y + 100);
-                                    newPos = new Vector2(n.pos.X + 100, n.pos.Y + 100);
+                                if (player.room.node.connections.Contains(n.node) && speed == new Vector2(0, 0))
+                                {   
                                     player.targetRoom = n;
+                                    Game1.highScore.NumberOfTurns++;
                                 }
                             }
                         }
@@ -477,33 +490,39 @@ namespace HuntTheWumpusXNAGame
                 foreach (NodeTest n in nodes)
                 {
                     spriteBatch.Draw(caveTex, new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200), Color.White);
+                    if (!player.visitedRooms.Contains(n))
+                    {
+                        spriteBatch.Draw(caveCover, new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200), Color.White);
+                    }
                 }
-                foreach (NodeTest n in nodes)
+                    if (player.room.Connections[0])
+                    {
+                        spriteBatch.Draw(twelve, new Rectangle(Convert.ToInt32(player.room.pos.X), Convert.ToInt32(player.room.pos.Y), 200, 200), Color.White);
+                    }
+                    if (player.room.Connections[1])
+                    {
+                        spriteBatch.Draw(two, new Rectangle(Convert.ToInt32(player.room.pos.X), Convert.ToInt32(player.room.pos.Y), 200, 200), Color.White);
+                    }
+                    if (player.room.Connections[2])
+                    {
+                        spriteBatch.Draw(four, new Rectangle(Convert.ToInt32(player.room.pos.X), Convert.ToInt32(player.room.pos.Y), 200, 200), Color.White);
+                    }
+                    if (player.room.Connections[3])
+                    {
+                        spriteBatch.Draw(six, new Rectangle(Convert.ToInt32(player.room.pos.X), Convert.ToInt32(player.room.pos.Y), 200, 200), Color.White);
+                    }
+                    if (player.room.Connections[4])
+                    {
+                        spriteBatch.Draw(eight, new Rectangle(Convert.ToInt32(player.room.pos.X), Convert.ToInt32(player.room.pos.Y), 200, 200), Color.White);
+                    }
+                    if (player.room.Connections[5])
+                    {
+                        spriteBatch.Draw(ten, new Rectangle(Convert.ToInt32(player.room.pos.X), Convert.ToInt32(player.room.pos.Y), 200, 200), Color.White);
+                    }
+                spriteBatch.Draw(inventoryBackground, new Rectangle(0, Convert.ToInt32(graphics.GraphicsDevice.Viewport.Height * .597), graphics.GraphicsDevice.Viewport.Width, Convert.ToInt32(graphics.GraphicsDevice.Viewport.Height * .402)), Color.White);
+                for (int i = 0; i < player.items.Count; i++)
                 {
-                    if (n.Connections[0])
-                    {
-                        spriteBatch.Draw(twelve, new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200), Color.White);
-                    }
-                    if (n.Connections[1])
-                    {
-                        spriteBatch.Draw(two, new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200), Color.White);
-                    }
-                    if (n.Connections[2])
-                    {
-                        spriteBatch.Draw(four, new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200), Color.White);
-                    }
-                    if (n.Connections[3])
-                    {
-                        spriteBatch.Draw(six, new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200), Color.White);
-                    }
-                    if (n.Connections[4])
-                    {
-                        spriteBatch.Draw(eight, new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200), Color.White);
-                    }
-                    if (n.Connections[5])
-                    {
-                        spriteBatch.Draw(ten, new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200), Color.White);
-                    }
+                    spriteBatch.Draw(player.items[i].texture, new Rectangle(Convert.ToInt32(graphics.GraphicsDevice.Viewport.Width * .55) + (i * 200), Convert.ToInt32(graphics.GraphicsDevice.Viewport.Height * .7), 100, 150), Color.White);
                 }
                 spriteBatch.Draw(edge, new Rectangle(0, 0, graphics.GraphicsDevice.Viewport.Width, graphics.GraphicsDevice.Viewport.Height), Color.White);
                 spriteBatch.Draw(playerTex, player.bounding, Color.White);
@@ -540,6 +559,13 @@ namespace HuntTheWumpusXNAGame
                     foreach (Vector2 v in player.room.hex.ten.ints)
                     {
                         spriteBatch.Draw(lineTest, new Rectangle(Convert.ToInt32(v.X), Convert.ToInt32(v.Y), 1, 1), Color.White);
+                    }
+                    foreach (NodeTest n in nodes)
+                    {
+                        if (new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200).Intersects(new Rectangle(Mouse.GetState().X, Mouse.GetState().Y, 1, 1)))
+                        {
+                            spriteBatch.DrawString(spriteFont, n.pos.X + " " + n.pos.Y, new Vector2(Mouse.GetState().X, Mouse.GetState().Y), Color.White);
+                        }
                     }
                 }
             }
