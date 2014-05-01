@@ -47,12 +47,14 @@ namespace HuntTheWumpusXNAGame
         public NodeTest targetRoom;
         public List<Item> items;
         public List<NodeTest> visitedRooms;
-        public PlayerTest(NodeTest room, Rectangle bounding)
+        public Player player;
+        public PlayerTest(NodeTest room, Rectangle bounding, Player player)
         {
             this.room = room;
             this.bounding = bounding;
             items = new List<Item>();
             visitedRooms = new List<NodeTest>();
+            this.player = player;
         }
         public void Update(List<NodeTest> nodes)
         {
@@ -192,6 +194,7 @@ namespace HuntTheWumpusXNAGame
         Texture2D caveCover;
         Texture2D inventoryBackground;
         Texture2D soup;
+        Player play;
 
         public Game1()
         {
@@ -255,9 +258,10 @@ namespace HuntTheWumpusXNAGame
             gamestate = GameState.Menu;
             menuTex = Content.Load<Texture2D>("MenuScreen1");
             createMap();
-            startGame = new Button(530, 480, 405, 150);            
+            startGame = new Button(530, 480, 405, 150);
             playerTex = Content.Load<Texture2D>("Player");
-            player = new PlayerTest(nodes[0], new Rectangle((graphics.GraphicsDevice.Viewport.Width / 2) - (playerTex.Width / 2), 100, 50, 50));
+            player = new PlayerTest(nodes[0], new Rectangle((graphics.GraphicsDevice.Viewport.Width / 2) - (playerTex.Width / 2), 100, 50, 50), play);
+            play = new Player(player, 3, 0);
             twelve = Content.Load<Texture2D>("0");
             two = Content.Load<Texture2D>("1");
             four = Content.Load<Texture2D>("2");
@@ -355,7 +359,7 @@ namespace HuntTheWumpusXNAGame
                         if (!player.visitedRooms.Contains(player.targetRoom))
                         {
                             player.visitedRooms.Add(player.targetRoom);
-                            Game1.highScore.GoldLeft++;
+                            Player.Gold++;
                         }
                     }
                     foreach (NodeTest n in nodes)
@@ -446,9 +450,10 @@ namespace HuntTheWumpusXNAGame
                         ClearTrivia();
                     }
                 }
-                oldMouse = Mouse.GetState();
-                oldState = Keyboard.GetState();
-                base.Update(gameTime);
+            play.Update(player);
+            oldMouse = Mouse.GetState();
+            oldState = Keyboard.GetState();
+            base.Update(gameTime);
             }
 
         /// <summary>
@@ -532,8 +537,8 @@ namespace HuntTheWumpusXNAGame
                 spriteBatch.DrawString(spriteFont, tAnswerC.question, tAnswerC.bounding, Color.Gold);
                 spriteBatch.DrawString(spriteFont, tAnswerD.question, tAnswerD.bounding, Color.Gold);
                 spriteBatch.DrawString(spriteFont, "Turns: " + highScore.NumberOfTurns, new Vector2(20, 20), Color.Gold);
-                spriteBatch.DrawString(spriteFont, "Gold: " + highScore.GoldLeft, new Vector2(20, 40), Color.Gold);
-                spriteBatch.DrawString(spriteFont, "Arrows: " + highScore.NumberOfArrows, new Vector2(20, 60), Color.Gold);
+                spriteBatch.DrawString(spriteFont, "Gold: " + Player.Gold, new Vector2(20, 40), Color.Gold);
+                spriteBatch.DrawString(spriteFont, "Arrows: " + Player.Arrows, new Vector2(20, 60), Color.Gold);
                 if (debug)
                 {
                     foreach (Vector2 v in player.room.hex.twelve.ints)
