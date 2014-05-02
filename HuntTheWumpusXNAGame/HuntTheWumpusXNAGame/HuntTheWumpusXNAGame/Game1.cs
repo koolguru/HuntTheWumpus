@@ -65,72 +65,99 @@ namespace HuntTheWumpusXNAGame
                 {
                     node.hex.checkArea(new Point(375, 125), this);
                 }
-                if (Math.Abs(node.pos.X - room.pos.X) < 5 && Math.Abs(node.pos.Y - room.pos.Y - 200) < 5)
+                foreach (Node n in node.node.connections)
                 {
-                    if (room.node.connections.Contains(node.node))
+                    if (Engine.valueList[node.node.nodeNumber - 1][0] == n.nodeNumber)
                     {
-                        room.Connections[0] = true;
+                        node.Connections[0] = true;
                     }
-                    else
+                    if (Engine.valueList[node.node.nodeNumber - 1][1] == n.nodeNumber)
                     {
-                        room.Connections[0] = false;
+                        node.Connections[1] = true;
+                    }
+                    if (Engine.valueList[node.node.nodeNumber - 1][2] == n.nodeNumber)
+                    {
+                        node.Connections[2] = true;
+                    }
+                    if (Engine.valueList[node.node.nodeNumber - 1][3] == n.nodeNumber)
+                    {
+                        node.Connections[3] = true;
+                    }
+                    if (Engine.valueList[node.node.nodeNumber - 1][4] == n.nodeNumber)
+                    {
+                        node.Connections[4] = true;
+                    }
+                    if (Engine.valueList[node.node.nodeNumber - 1][5] == n.nodeNumber)
+                    {
+                        node.Connections[5] = true;
                     }
                 }
-                else if (Math.Abs(node.pos.X - room.pos.X - 150) < 5 && Math.Abs(node.pos.Y - room.pos.Y - 100) < 5)
-                {
-                    if (room.node.connections.Contains(node.node))
-                    {
-                        room.Connections[1] = true;
-                    }
-                    else
-                    {
-                        room.Connections[1] = false;
-                    }
-                }
-                else if (Math.Abs(node.pos.X - room.pos.X - 150) < 5 && Math.Abs(node.pos.Y - room.pos.Y + 100) < 5)
-                {
-                    if (room.node.connections.Contains(node.node))
-                    {
-                        room.Connections[2] = true;
-                    }
-                    else
-                    {
-                        room.Connections[2] = false;
-                    }
-                }
-                else if (Math.Abs(node.pos.X - room.pos.X) < 5 && Math.Abs(node.pos.Y - room.pos.Y + 200) < 5)
-                {
-                    if (room.node.connections.Contains(node.node))
-                    {
-                        room.Connections[3] = true;
-                    }
-                    else
-                    {
-                        room.Connections[3] = false;
-                    }
-                }
-                else if (Math.Abs(node.pos.X - room.pos.X + 150) < 5 && Math.Abs(node.pos.Y - room.pos.Y + 100) < 5)
-                {
-                    if (room.node.connections.Contains(node.node))
-                    {
-                        room.Connections[4] = true;
-                    }
-                    else
-                    {
-                        room.Connections[4] = false;
-                    }
-                }
-                else if (Math.Abs(node.pos.X - room.pos.X + 150) < 5 && Math.Abs(node.pos.Y - room.pos.Y - 100) < 5)
-                {
-                    if (room.node.connections.Contains(node.node))
-                    {
-                        room.Connections[5] = true;
-                    }
-                    else
-                    {
-                        room.Connections[5] = false;
-                    }
-                }
+                //if (Math.Abs(node.pos.X - room.pos.X) < 5 && Math.Abs(node.pos.Y - room.pos.Y - 200) < 5)
+                //{
+                //    if (room.node.connections.Contains(node.node))
+                //    {
+                //        room.Connections[0] = true;
+                //    }
+                //    else
+                //    {
+                //        room.Connections[0] = false;
+                //    }
+                //}
+                //else if (Math.Abs(node.pos.X - room.pos.X - 150) < 5 && Math.Abs(node.pos.Y - room.pos.Y - 100) < 5)
+                //{
+                //    if (room.node.connections.Contains(node.node))
+                //    {
+                //        room.Connections[1] = true;
+                //    }
+                //    else
+                //    {
+                //        room.Connections[1] = false;
+                //    }
+                //}
+                //else if (Math.Abs(node.pos.X - room.pos.X - 150) < 5 && Math.Abs(node.pos.Y - room.pos.Y + 100) < 5)
+                //{
+                //    if (room.node.connections.Contains(node.node))
+                //    {
+                //        room.Connections[2] = true;
+                //    }
+                //    else
+                //    {
+                //        room.Connections[2] = false;
+                //    }
+                //}
+                //else if (Math.Abs(node.pos.X - room.pos.X) < 5 && Math.Abs(node.pos.Y - room.pos.Y + 200) < 5)
+                //{
+                //    if (room.node.connections.Contains(node.node))
+                //    {
+                //        room.Connections[3] = true;
+                //    }
+                //    else
+                //    {
+                //        room.Connections[3] = false;
+                //    }
+                //}
+                //else if (Math.Abs(node.pos.X - room.pos.X + 150) < 5 && Math.Abs(node.pos.Y - room.pos.Y + 100) < 5)
+                //{
+                //    if (room.node.connections.Contains(node.node))
+                //    {
+                //        room.Connections[4] = true;
+                //    }
+                //    else
+                //    {
+                //        room.Connections[4] = false;
+                //    }
+                //}
+                //else if (Math.Abs(node.pos.X - room.pos.X + 150) < 5 && Math.Abs(node.pos.Y - room.pos.Y - 100) < 5)
+                //{
+                //    if (room.node.connections.Contains(node.node))
+                //    {
+                //        room.Connections[5] = true;
+                //    }
+                //    else
+                //    {
+                //        room.Connections[5] = false;
+                //    }
+                //}
             }
             room.Update();
             }
@@ -190,6 +217,7 @@ namespace HuntTheWumpusXNAGame
         Button startGame;
         bool debug;
         Vector2 newPos;
+        Vector2 speed;
         public static HighScore highScore;
         Texture2D caveCover;
         Texture2D inventoryBackground;
@@ -291,6 +319,9 @@ namespace HuntTheWumpusXNAGame
             highScore = new HighScore(0, 0, 0);
             soup = Content.Load<Texture2D>("soup");
             player.items.Add(new Item("Bowl of Soup", "Warm and thick, just like mom used to make...", soup, new Rectangle(700, 600, 100, 150), 0));
+            double hypotinuse = Math.Sqrt(Math.Pow((player.bounding.Center.X - newPos.X), 2) + Math.Pow((player.bounding.Center.Y - newPos.Y + 16), 2));
+            newPos = new Vector2(player.targetRoom.pos.X + 100, player.targetRoom.pos.Y + 100);
+            speed = new Vector2(Convert.ToSingle((player.bounding.Center.X - newPos.X) / hypotinuse), Convert.ToSingle((player.bounding.Center.Y - newPos.Y) / hypotinuse));
         }
 
         /// <summary>
@@ -331,10 +362,11 @@ namespace HuntTheWumpusXNAGame
             ///////////////////
             if (gamestate == GameState.MainGame)
             {
-                Vector2 speed = new Vector2(0, 0);
                 if (Keyboard.GetState().IsKeyDown(Keys.R) && !oldState.IsKeyDown(Keys.R))
                 {
-                    speed = new Vector2(0, 0);
+                    double hypotinuse = Math.Sqrt(Math.Pow((player.bounding.Center.X - newPos.X), 2) + Math.Pow((player.bounding.Center.Y - newPos.Y + 16), 2));
+                    newPos = new Vector2(player.targetRoom.pos.X + 100, player.targetRoom.pos.Y + 100);
+                    speed = new Vector2(Convert.ToSingle((player.bounding.Center.X - newPos.X) / hypotinuse), Convert.ToSingle((player.bounding.Center.Y - newPos.Y) / hypotinuse));
                     engineNodes.Clear();
                     nodes.Clear();
                     createMap();
@@ -348,11 +380,6 @@ namespace HuntTheWumpusXNAGame
                     debug = !debug;
                 }
                 player.Update(nodes);
-                double hypotinuse = Math.Sqrt(Math.Pow((player.bounding.Center.X - newPos.X), 2) + Math.Pow((player.bounding.Center.Y - newPos.Y + 16), 2));
-                if (hypotinuse != 0)
-                {
-                    speed = new Vector2(Convert.ToSingle((player.bounding.Center.X - newPos.X) / hypotinuse), Convert.ToSingle((player.bounding.Center.Y - newPos.Y) / hypotinuse));
-                }
                     if (new Rectangle(player.bounding.X + 25, player.bounding.Y + 25, 1, 1).Intersects(new Rectangle(Convert.ToInt32(player.targetRoom.pos.X + 100), Convert.ToInt32(player.targetRoom.pos.Y + 100), 1, 10)))
                     {
                         speed = new Vector2(0, 0);
@@ -382,7 +409,6 @@ namespace HuntTheWumpusXNAGame
                         }
                         n.pos += speed;
                     }
-                    newPos = new Vector2(player.targetRoom.pos.X + 100, player.targetRoom.pos.Y + 100);
                     if (Mouse.GetState().LeftButton.Equals(ButtonState.Pressed) && oldMouse.LeftButton.Equals(ButtonState.Released))
                     {
                         foreach (NodeTest n in nodes)
@@ -393,6 +419,9 @@ namespace HuntTheWumpusXNAGame
                                 {   
                                     player.targetRoom = n;
                                     Game1.highScore.NumberOfTurns++;
+                                    double hypotinuse = Math.Sqrt(Math.Pow((player.bounding.Center.X - newPos.X), 2) + Math.Pow((player.bounding.Center.Y - newPos.Y + 16), 2));
+                                    newPos = new Vector2(player.targetRoom.pos.X + 100, player.targetRoom.pos.Y + 100);
+                                    speed = new Vector2(Convert.ToSingle((player.bounding.Center.X - newPos.X) / hypotinuse), Convert.ToSingle((player.bounding.Center.Y - newPos.Y) / hypotinuse));
                                 }
                             }
                         }
@@ -499,31 +528,34 @@ namespace HuntTheWumpusXNAGame
                     {
                         spriteBatch.Draw(caveCover, new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200), Color.White);
                     }
+                    if (player.visitedRooms.Contains(n))
+                    {
+                        if (n.Connections[0])
+                        {
+                            spriteBatch.Draw(twelve, new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200), Color.White);
+                        }
+                        if (n.Connections[1])
+                        {
+                            spriteBatch.Draw(two, new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200), Color.White);
+                        }
+                        if (n.Connections[2])
+                        {
+                            spriteBatch.Draw(four, new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200), Color.White);
+                        }
+                        if (n.Connections[3])
+                        {
+                            spriteBatch.Draw(six, new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200), Color.White);
+                        }
+                        if (n.Connections[4])
+                        {
+                            spriteBatch.Draw(eight, new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200), Color.White);
+                        }
+                        if (n.Connections[5])
+                        {
+                            spriteBatch.Draw(ten, new Rectangle(Convert.ToInt32(n.pos.X), Convert.ToInt32(n.pos.Y), 200, 200), Color.White);
+                        }
+                    }
                 }
-                    if (player.room.Connections[0])
-                    {
-                        spriteBatch.Draw(twelve, new Rectangle(Convert.ToInt32(player.room.pos.X), Convert.ToInt32(player.room.pos.Y), 200, 200), Color.White);
-                    }
-                    if (player.room.Connections[1])
-                    {
-                        spriteBatch.Draw(two, new Rectangle(Convert.ToInt32(player.room.pos.X), Convert.ToInt32(player.room.pos.Y), 200, 200), Color.White);
-                    }
-                    if (player.room.Connections[2])
-                    {
-                        spriteBatch.Draw(four, new Rectangle(Convert.ToInt32(player.room.pos.X), Convert.ToInt32(player.room.pos.Y), 200, 200), Color.White);
-                    }
-                    if (player.room.Connections[3])
-                    {
-                        spriteBatch.Draw(six, new Rectangle(Convert.ToInt32(player.room.pos.X), Convert.ToInt32(player.room.pos.Y), 200, 200), Color.White);
-                    }
-                    if (player.room.Connections[4])
-                    {
-                        spriteBatch.Draw(eight, new Rectangle(Convert.ToInt32(player.room.pos.X), Convert.ToInt32(player.room.pos.Y), 200, 200), Color.White);
-                    }
-                    if (player.room.Connections[5])
-                    {
-                        spriteBatch.Draw(ten, new Rectangle(Convert.ToInt32(player.room.pos.X), Convert.ToInt32(player.room.pos.Y), 200, 200), Color.White);
-                    }
                 spriteBatch.Draw(inventoryBackground, new Rectangle(0, Convert.ToInt32(graphics.GraphicsDevice.Viewport.Height * .597), graphics.GraphicsDevice.Viewport.Width, Convert.ToInt32(graphics.GraphicsDevice.Viewport.Height * .402)), Color.White);
                 for (int i = 0; i < player.items.Count; i++)
                 {
