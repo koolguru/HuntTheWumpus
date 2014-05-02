@@ -17,10 +17,13 @@ namespace HuntTheWumpusXNAGame
             NumberOfTurns = turns;
             NumberOfArrows = arrows;
             GoldLeft = gold;
+            XmlDocument database;
+            database = new XmlDocument();
+            database.Load("HighScores.xml");
         }
-        public List<int> TopTenScores(int totalScore)
+        public List<double> TopTenScores(double totalScore)
         {
-            List<int> highScoreList = new List<int>();
+            List<double> highScoreList = new List<double>();
             //pulls an existing high score list
             //gets totalScore from ScoreCalculations
             //compares totalScore with entire list
