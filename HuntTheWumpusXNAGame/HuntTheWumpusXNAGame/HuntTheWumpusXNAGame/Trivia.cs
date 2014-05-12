@@ -120,7 +120,7 @@ namespace HuntTheWumpusXNAGame
         public TriviaAnswer(string answer, int number)
             : base(answer, number)
         {
-            this.bounding = new Vector2(20, 350 + 16 * number);
+            this.bounding = new Vector2(20, Game1.graphics.GraphicsDevice.Viewport.Height - ((6 - number) * 16));
         }
     }
 }
